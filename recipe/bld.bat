@@ -7,7 +7,7 @@ if "%ARCH%"=="32" (
     call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x86 10.0.15063.0
    )
 ) else if "%ARCH%"=="arm64" (
-  set MACHINE="ARM64"
+  set MACHINE="arm64"
   :: A different SDK is needed when build with VS 2017 and 2015
   :: http://wiki.tcl.tk/54819
   if "%VS_MAJOR%"=="14" (
