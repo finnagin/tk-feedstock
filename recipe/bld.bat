@@ -6,6 +6,14 @@ if "%ARCH%"=="32" (
     echo "Switching SDK versions"
     call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x86 10.0.15063.0
    )
+) else if "%ARCH%"=="arm64" (
+  set MACHINE="ARM64"
+  :: A different SDK is needed when build with VS 2017 and 2015
+  :: http://wiki.tcl.tk/54819
+  if "%VS_MAJOR%"=="14" (
+    echo "Switching SDK versions"
+    call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64_arm64 10.0.15063.0
+  )
 ) else (
   set MACHINE="AMD64"
   :: A different SDK is needed when build with VS 2017 and 2015
