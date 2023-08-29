@@ -28,12 +28,8 @@ if "%ARCH%"=="32" (
 
 pushd tcl%PKG_VERSION%\win
 nmake nmakehlp.exe INSTALLDIR=%LIBRARY_PREFIX%
-echo %TMP_DIR%
-dir %TMP_DIR%
-echo %OUT_DIR%
-dir %OUT_DIR%
-echo %INSTALLDIR%
-dir %INSTALLDIR%
+set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
+where nmakehlp
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% release
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% install
 if %ERRORLEVEL% GTR 0 exit 1
