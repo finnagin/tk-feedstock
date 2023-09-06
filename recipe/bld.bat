@@ -27,6 +27,8 @@ if "%ARCH%"=="32" (
 )
 
 pushd tcl%PKG_VERSION%\win
+echo "^^^^^^^^^^^^^^^^^^^^^^^^ PATH ^^^^^^^^^^^^^^^^^^^^^^^^"
+echo %PATH%
 nmake nmakehlp.exe INSTALLDIR=%LIBRARY_PREFIX%
 set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
 echo %PATH%
