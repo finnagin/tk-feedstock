@@ -34,9 +34,14 @@ if %ARCH%=="ARM64" (
    echo "^^^^^^^^^^^^^^^^^^^^^^^^ build native tcl ^^^^^^^^^^^^^^^^^^^^^^^^"
    where nmake
    mkdir %SRC_DIR%\tclnative
+   nmake nmakehlp.exe INSTALLDIR=%SRC_DIR%\tclnative
+   set OLD_PATH=%PATH%
+   set PATH=%PATH%;%SRC_DIR%\tclnative
+   echo %OLD_PATH%
    nmake -f makefile.vc INSTALLDIR=%SRC_DIR%\tclnative MACHINE="AMD64" ARCH="AMD64" release
    nmake -f makefile.vc INSTALLDIR=%SRC_DIR%\tclnative MACHINE="AMD64" ARCH="AMD64" install
    set TCLSH_NATIVE=%SRC_DIR%\tclnative
+   set PATH=%OLD_PATH%
    echo "^^^^^^^^^^^^^^^^^^^^^^^^ set TCLSH_NATIVE ^^^^^^^^^^^^^^^^^^^^^^^^"
    cd %TCLSH_NATIVE%
    dir
