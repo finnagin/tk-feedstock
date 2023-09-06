@@ -30,13 +30,13 @@ pushd tcl%PKG_VERSION%\win
 nmake nmakehlp.exe INSTALLDIR=%LIBRARY_PREFIX%
 set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
 if %ARCH%=="ARM64" (
-   nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX%\native MACHINE="AMD64" release
-   nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX%\native MACHINE="AMD64" install
-   set TCLSH_NATIVE=%LIBRARY_PREFIX%\native
+   nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX%\native MACHINE="AMD64" ARCH="AMD64" release
+   nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX%\native MACHINE="AMD64" ARCH="AMD64" install
+   set TCLSH_NATIVE=%SRC_DIR%\tclnative
    echo "^^^^^^^^^^^^^^^^^^^^^^^^ set TCLSH_NATIVE ^^^^^^^^^^^^^^^^^^^^^^^^"
-   pushd %TCLSH_NATIVE%
+   cd %TCLSH_NATIVE%
    dir
-   popd
+   cd %SRC_DIR%\tcl%PKG_VERSION%\win
 ) else (
    echo "^^^^^^^^^^^^^^^^^^^^^^^^ skipped TCLSH_NATIVE ^^^^^^^^^^^^^^^^^^^^^^^^"
    echo %ARCH%
