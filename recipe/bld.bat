@@ -34,7 +34,9 @@ if %ARCH%=="ARM64" (
    nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX%\native MACHINE="AMD64" install
    set TCLSH_NATIVE=%LIBRARY_PREFIX%\native
    echo "^^^^^^^^^^^^^^^^^^^^^^^^ set TCLSH_NATIVE ^^^^^^^^^^^^^^^^^^^^^^^^"
-   dir %TCLSH_NATIVE%
+   pushd %TCLSH_NATIVE%
+   dir
+   popd
 ) else (
    echo "^^^^^^^^^^^^^^^^^^^^^^^^ skipped TCLSH_NATIVE ^^^^^^^^^^^^^^^^^^^^^^^^"
    echo %ARCH%
