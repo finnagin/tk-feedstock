@@ -30,6 +30,7 @@ pushd tcl%PKG_VERSION%\win
 nmake nmakehlp.exe INSTALLDIR=%LIBRARY_PREFIX%
 set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
 if %ARCH%=="ARM64" (
+   echo "^^^^^^^^^^^^^^^^^^^^^^^^ build native tcl ^^^^^^^^^^^^^^^^^^^^^^^^"
    mkdir %SRC_DIR%\tclnative
    nmake -f makefile.vc INSTALLDIR=%SRC_DIR%\tclnative MACHINE="AMD64" ARCH="AMD64" release
    nmake -f makefile.vc INSTALLDIR=%SRC_DIR%\tclnative MACHINE="AMD64" ARCH="AMD64" install
