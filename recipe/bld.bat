@@ -30,8 +30,9 @@ if "%ARCH%"=="32" (
 )
 
 pushd tcl%PKG_VERSION%\win
-:: nmake nmakehlp.exe INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%NATIVE_ARCH%
-:: set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
+echo %PATH%
+nmake nmakehlp.exe INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%NATIVE_ARCH%
+set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
 if %ARCH%=="ARM64" (
    echo "^^^^^^^^^^^^^^^^^^^^^^^^ build native tcl ^^^^^^^^^^^^^^^^^^^^^^^^"
    mkdir %SRC_DIR%\tclnative
