@@ -1,5 +1,6 @@
 if "%ARCH%"=="32" (
    set MACHINE="IX86"
+   set NATIVE_ARCH="IX86"
    :: A different SDK is needed when build with VS 2017 and 2015
    :: http://wiki.tcl.tk/54819
    if "%VS_MAJOR%"=="14" (
@@ -9,6 +10,7 @@ if "%ARCH%"=="32" (
 ) else if "%ARCH%"=="arm64" (
   set MACHINE="ARM64"
   set ARCH="ARM64"
+  set NATIVE_ARCH="AMD64"
   :: set TCLSH_NATIVE=0
   :: A different SDK is needed when build with VS 2017 and 2015
   :: http://wiki.tcl.tk/54819
@@ -18,6 +20,7 @@ if "%ARCH%"=="32" (
   )
 ) else (
   set MACHINE="AMD64"
+  set NATIVE_ARCH="AMD64"
   :: A different SDK is needed when build with VS 2017 and 2015
   :: http://wiki.tcl.tk/54819
   if "%VS_MAJOR%"=="14" (
@@ -27,8 +30,8 @@ if "%ARCH%"=="32" (
 )
 
 pushd tcl%PKG_VERSION%\win
-nmake nmakehlp.exe INSTALLDIR=%LIBRARY_PREFIX%
-set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
+:: nmake nmakehlp.exe INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%NATIVE_ARCH%
+:: set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
 if %ARCH%=="ARM64" (
    echo "^^^^^^^^^^^^^^^^^^^^^^^^ build native tcl ^^^^^^^^^^^^^^^^^^^^^^^^"
    mkdir %SRC_DIR%\tclnative
