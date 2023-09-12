@@ -35,8 +35,8 @@ set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
 if %ARCH%=="ARM64" (
    echo "^^^^^^^^^^^^^^^^^^^^^^^^ build native tcl ^^^^^^^^^^^^^^^^^^^^^^^^"
    mkdir %SRC_DIR%\tclnative
-   nmake -f makefile.vc INSTALLDIR=%SRC_DIR%\tclnative MACHINE="AMD64" ARCH="AMD64" release
-   nmake -f makefile.vc INSTALLDIR=%SRC_DIR%\tclnative MACHINE="AMD64" ARCH="AMD64" install
+   nmake -f makefile.vc BUILDDIRTOP="Native" INSTALLDIR=%SRC_DIR%\tclnative MACHINE="AMD64" ARCH="AMD64" release
+   nmake -f makefile.vc BUILDDIRTOP="Native" INSTALLDIR=%SRC_DIR%\tclnative MACHINE="AMD64" ARCH="AMD64" install
    set TCLSH_NATIVE=%SRC_DIR%\tclnative
    echo "^^^^^^^^^^^^^^^^^^^^^^^^ set TCLSH_NATIVE ^^^^^^^^^^^^^^^^^^^^^^^^"
    cd %TCLSH_NATIVE%
