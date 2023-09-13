@@ -8,12 +8,12 @@ if "%ARCH%"=="32" (
     call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x86 10.0.15063.0
    )
 ) else if "%ARCH%"=="arm64" (
-  set MACHINE="ARM64"
-  set ARCH="ARM64"
   echo "^^^^^^^^^^^^^^^^^^^^^^^^ build native tcl ^^^^^^^^^^^^^^^^^^^^^^^^"
   mkdir %SRC_DIR%\tclnative
-  nmake -f makefile.vc BUILDDIRTOP="Release_AMD64" INSTALLDIR=%SRC_DIR%\tclnative INSTALL_DIR=%SRC_DIR%\tclnative NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" release
-  nmake -f makefile.vc BUILDDIRTOP="Install_AMD64" INSTALLDIR=%SRC_DIR%\tclnative INSTALL_DIR=%SRC_DIR%\tclnative NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" install
+  nmake -f %SRC_DIR%\tcl%PKG_VERSION%\win\makefile.vc BUILDDIRTOP="Release_AMD64" INSTALLDIR=%SRC_DIR%\tclnative INSTALL_DIR=%SRC_DIR%\tclnative NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" release
+  nmake -f %SRC_DIR%\tcl%PKG_VERSION%\win\makefile.vc BUILDDIRTOP="Install_AMD64" INSTALLDIR=%SRC_DIR%\tclnative INSTALL_DIR=%SRC_DIR%\tclnative NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" install
+  set MACHINE="ARM64"
+  set ARCH="ARM64"
   :: set NATIVE_ARCH="AMD64"
   :: set TCLSH_NATIVE=0
   :: A different SDK is needed when build with VS 2017 and 2015
