@@ -29,6 +29,7 @@ if "%ARCH%"=="32" (
   )
 )
 
+reg query HKLM\Hardware\Description\System\CentralProcessor\0 /v Identifier
 pushd tcl%PKG_VERSION%\win
 nmake nmakehlp.exe INSTALLDIR=%LIBRARY_PREFIX%
 set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
