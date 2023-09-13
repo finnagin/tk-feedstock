@@ -9,6 +9,7 @@ if "%ARCH%"=="32" (
    )
 ) else if "%ARCH%"=="arm64" (
   echo "^^^^^^^^^^^^^^^^^^^^^^^^ build native tcl ^^^^^^^^^^^^^^^^^^^^^^^^"
+  set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
   mkdir %SRC_DIR%\tclnative
   nmake -f %SRC_DIR%\tcl%PKG_VERSION%\win\makefile.vc BUILDDIRTOP="Release_AMD64" INSTALLDIR=%SRC_DIR%\tclnative INSTALL_DIR=%SRC_DIR%\tclnative NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" release
   nmake -f %SRC_DIR%\tcl%PKG_VERSION%\win\makefile.vc BUILDDIRTOP="Install_AMD64" INSTALLDIR=%SRC_DIR%\tclnative INSTALL_DIR=%SRC_DIR%\tclnative NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" install
@@ -34,8 +35,6 @@ if "%ARCH%"=="32" (
 )
 
 reg query HKLM\Hardware\Description\System\CentralProcessor\0 /v Identifier
-pushd tcl%PKG_VERSION%\win
-set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
 if %ARCH%=="ARM64" (
    echo "^^^^^^^^^^^^^^^^^^^^^^^^ set TCLSH_NATIVE ^^^^^^^^^^^^^^^^^^^^^^^^"
    set TCLSH_NATIVE=%SRC_DIR%\tclnative
@@ -44,9 +43,10 @@ if %ARCH%=="ARM64" (
    cd %SRC_DIR%\tcl%PKG_VERSION%\win
 ) else (
    echo "^^^^^^^^^^^^^^^^^^^^^^^^ skipped TCLSH_NATIVE ^^^^^^^^^^^^^^^^^^^^^^^^"
-   echo %ARCH%
+   set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
 )
 echo "^^^^^^^^^^^^^^^^^^^^^ running tcl build ^^^^^^^^^^^^^^^^^^^^^"
+pushd tcl%PKG_VERSION%\win
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% release
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% install
 if %ERRORLEVEL% GTR 0 exit 1
