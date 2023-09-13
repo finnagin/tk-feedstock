@@ -10,6 +10,10 @@ if "%ARCH%"=="32" (
 ) else if "%ARCH%"=="arm64" (
   set MACHINE="ARM64"
   set ARCH="ARM64"
+  echo "^^^^^^^^^^^^^^^^^^^^^^^^ build native tcl ^^^^^^^^^^^^^^^^^^^^^^^^"
+  mkdir %SRC_DIR%\tclnative
+  nmake -f makefile.vc BUILDDIRTOP="Release_AMD64" INSTALLDIR=%SRC_DIR%\tclnative INSTALL_DIR=%SRC_DIR%\tclnative NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" release
+  nmake -f makefile.vc BUILDDIRTOP="Install_AMD64" INSTALLDIR=%SRC_DIR%\tclnative INSTALL_DIR=%SRC_DIR%\tclnative NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" install
   :: set NATIVE_ARCH="AMD64"
   :: set TCLSH_NATIVE=0
   :: A different SDK is needed when build with VS 2017 and 2015
@@ -33,12 +37,8 @@ reg query HKLM\Hardware\Description\System\CentralProcessor\0 /v Identifier
 pushd tcl%PKG_VERSION%\win
 set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
 if %ARCH%=="ARM64" (
-   echo "^^^^^^^^^^^^^^^^^^^^^^^^ build native tcl ^^^^^^^^^^^^^^^^^^^^^^^^"
-   mkdir %SRC_DIR%\tclnative
-   nmake -f makefile.vc BUILDDIRTOP="Release_AMD64" INSTALLDIR=%SRC_DIR%\tclnative INSTALL_DIR=%SRC_DIR%\tclnative NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" release
-   nmake -f makefile.vc BUILDDIRTOP="Install_AMD64" INSTALLDIR=%SRC_DIR%\tclnative INSTALL_DIR=%SRC_DIR%\tclnative NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" install
-   set TCLSH_NATIVE=%SRC_DIR%\tclnative
    echo "^^^^^^^^^^^^^^^^^^^^^^^^ set TCLSH_NATIVE ^^^^^^^^^^^^^^^^^^^^^^^^"
+   set TCLSH_NATIVE=%SRC_DIR%\tclnative
    cd %TCLSH_NATIVE%
    dir
    cd %SRC_DIR%\tcl%PKG_VERSION%\win
