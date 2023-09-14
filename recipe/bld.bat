@@ -9,7 +9,6 @@ if "%ARCH%"=="32" (
    )
 ) else if "%ARCH%"=="arm64" (
   echo "^^^^^^^^^^^^^^^^^^^^^^^^ build native tcl ^^^^^^^^^^^^^^^^^^^^^^^^"
-  set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
   mkdir %SRC_DIR%\tclnative
   nmake -f %SRC_DIR%\tcl%PKG_VERSION%\win\makefile.vc BUILDDIRTOP="Release_AMD64" INSTALLDIR=%SRC_DIR%\tclnative INSTALL_DIR=%SRC_DIR%\tclnative NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" release
   nmake -f %SRC_DIR%\tcl%PKG_VERSION%\win\makefile.vc BUILDDIRTOP="Install_AMD64" INSTALLDIR=%SRC_DIR%\tclnative INSTALL_DIR=%SRC_DIR%\tclnative NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" install
@@ -45,6 +44,7 @@ if %ARCH%=="ARM64" (
    cd %SRC_DIR%\tcl%PKG_VERSION%\win
 ) else (
    echo "^^^^^^^^^^^^^^^^^^^^^^^^ skipped TCLSH_NATIVE ^^^^^^^^^^^^^^^^^^^^^^^^"
+   echo %ARCH%
 )
 echo "^^^^^^^^^^^^^^^^^^^^^ running tcl build ^^^^^^^^^^^^^^^^^^^^^"
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% release
