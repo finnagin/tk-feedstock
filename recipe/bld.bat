@@ -8,6 +8,11 @@ if "%ARCH%"=="32" (
     call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x86 10.0.15063.0
    )
 ) else if "%ARCH%"=="arm64" (
+  echo "^^^^^^^^^^^^^^^^^^^^^^^^ run native vcvarsall ^^^^^^^^^^^^^^^^^^^^^^^^"
+  if "%VS_MAJOR%"=="14" (
+    echo "Switching SDK versions"
+    call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x64 10.0.15063.0
+  )
   echo "^^^^^^^^^^^^^^^^^^^^^^^^ build native tcl ^^^^^^^^^^^^^^^^^^^^^^^^"
   mkdir %SRC_DIR%\tclnative
   pushd tcl%PKG_VERSION%\win
