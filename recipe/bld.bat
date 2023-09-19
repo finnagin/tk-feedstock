@@ -7,6 +7,7 @@ if "%ARCH%"=="32" (
     echo "Switching SDK versions"
     call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x86 10.0.15063.0
    )
+   set "PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win"
 ) else if "%ARCH%"=="arm64" (
   echo "^^^^^^^^^^^^^^^^^^^^^^^^ run native vcvarsall ^^^^^^^^^^^^^^^^^^^^^^^^"
   if "%VS_MAJOR%"=="14" (
@@ -16,7 +17,7 @@ if "%ARCH%"=="32" (
   echo "^^^^^^^^^^^^^^^^^^^^^^^^ build native tcl ^^^^^^^^^^^^^^^^^^^^^^^^"
   mkdir %SRC_DIR%\tclnative
   pushd tcl%PKG_VERSION%\win
-  set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
+  set "PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win"
   nmake -f %SRC_DIR%\tcl%PKG_VERSION%\win\makefile.vc BUILDDIRTOP="Release_AMD64" INSTALLDIR=%SRC_DIR%\tclnative INSTALL_DIR=%SRC_DIR%\tclnative NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" release
   nmake -f %SRC_DIR%\tcl%PKG_VERSION%\win\makefile.vc BUILDDIRTOP="Install_AMD64" INSTALLDIR=%SRC_DIR%\tclnative INSTALL_DIR=%SRC_DIR%\tclnative NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" install
   popd
@@ -39,11 +40,11 @@ if "%ARCH%"=="32" (
     echo "Switching SDK versions"
     call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x64 10.0.15063.0
   )
+  set "PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win"
 )
 
 reg query HKLM\Hardware\Description\System\CentralProcessor\0 /v Identifier
 pushd tcl%PKG_VERSION%\win
-set PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win
 if %ARCH%=="ARM64" (
    echo "^^^^^^^^^^^^^^^^^^^^^^^^ set TCLSH_NATIVE ^^^^^^^^^^^^^^^^^^^^^^^^"
    set TCLSH_NATIVE=%SRC_DIR%\tclnative
