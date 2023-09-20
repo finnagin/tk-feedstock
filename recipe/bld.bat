@@ -19,8 +19,10 @@ if "%ARCH%"=="32" (
   pushd tcl%PKG_VERSION%\win
   dir
   set "PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win"
-  nmake -f %SRC_DIR%\tcl%PKG_VERSION%\win\makefile.vc BUILDDIRTOP="Release_AMD64" INSTALLDIR=%LIBRARY_PREFIX% NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" release
-  nmake -f %SRC_DIR%\tcl%PKG_VERSION%\win\makefile.vc BUILDDIRTOP="Install_AMD64" INSTALLDIR=%LIBRARY_PREFIX% NATIVE_ARCH="AMD64" MACHINE="AMD64" ARCH="AMD64" install
+  set MACHINE="AMD64"
+  ser ARCH="AMD64"
+  nmake -f %SRC_DIR%\tcl%PKG_VERSION%\win\makefile.vc BUILDDIRTOP="Release_AMD64" INSTALLDIR=%LIBRARY_PREFIX% MACHINE="AMD64" ARCH="AMD64" release
+  nmake -f %SRC_DIR%\tcl%PKG_VERSION%\win\makefile.vc BUILDDIRTOP="Install_AMD64" INSTALLDIR=%LIBRARY_PREFIX% MACHINE="AMD64" ARCH="AMD64" install
   popd
   set MACHINE="ARM64"
   set ARCH="ARM64"
