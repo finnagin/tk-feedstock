@@ -11,8 +11,8 @@ if %2=="14" (
 
 echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Installing in %LIBRARY_PREFIX% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 pushd %~1
-nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% release
-nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% install
+nmake -f makefile.vc BUILDDIRTOP=RELEASE_win_amd64 INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% release
+:: nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% install
 if %ERRORLEVEL% GTR 0 exit 1
 popd
 echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ SUCCESS ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
