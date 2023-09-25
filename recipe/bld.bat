@@ -9,9 +9,9 @@ if "%ARCH%"=="32" (
 ) else if "%ARCH%"=="arm64" (
   set MACHINE="ARM64"
   set ARCH="ARM64"
-  echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RUNNING NATIVE BUILD ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+  echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RUNNING NATIVE BUILD in %~dp0 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
   start /B /I /WAIT cmd /c %~dp0\..\.scripts\win_64_native_build.bat "%LIBRARY_PREFIX%" "%VS_MAJOR%"
-  echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ fINISHED NATIVE BUILD ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+  echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ FINISHED NATIVE BUILD ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
   :: A different SDK is needed when build with VS 2017 and 2015
   :: http://wiki.tcl.tk/54819
   if "%VS_MAJOR%"=="14" (
