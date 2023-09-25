@@ -9,8 +9,10 @@ if %2=="14" (
   call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x64 10.0.15063.0
 )
 
+echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Installing in %LIBRARY_PREFIX% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 pushd %~1
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% release
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% install
 if %ERRORLEVEL% GTR 0 exit 1
 popd
+echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ SUCCESS ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
