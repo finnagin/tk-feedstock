@@ -9,6 +9,7 @@ if "%ARCH%"=="32" (
 ) else if "%ARCH%"=="arm64" (
   set MACHINE="ARM64"
   set ARCH="ARM64"
+  echo %SRC_DIR%
   echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RUNNING NATIVE BUILD in %SRC_DIR% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
   start /B /I /WAIT cmd /c %~dp0\..\.scripts\win_64_native_build.bat "%LIBRARY_PREFIX%" "%VS_MAJOR%"
   echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ FINISHED NATIVE BUILD ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
