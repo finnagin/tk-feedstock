@@ -6,6 +6,15 @@ if "%ARCH%"=="32" (
     echo "Switching SDK versions"
     call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x86 10.0.15063.0
    )
+) else if "%ARCH%"=="arm64" (
+  set MACHINE="ARM64"
+  set ARCH="ARM64"
+  :: A different SDK is needed when build with VS 2017 and 2015
+  :: http://wiki.tcl.tk/54819
+  if "%VS_MAJOR%"=="14" (
+    echo "Switching SDK versions"
+    call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64_arm64 10.0.15063.0
+  )
 ) else (
   set MACHINE="AMD64"
   :: A different SDK is needed when build with VS 2017 and 2015
@@ -36,6 +45,9 @@ nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% TCLDIR=..\..\
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% TCLDIR=..\..\tcl%PKG_VERSION% install
 if %ERRORLEVEL% GTR 0 exit 1
 
+if "%ARCH%"=="ARM64" (
+  set ARCH="arm64"
+)
 :: Make sure that `wish` can be called without the version info.
 copy %LIBRARY_PREFIX%\bin\wish86t.exe %LIBRARY_PREFIX%\bin\wish.exe
 copy %LIBRARY_PREFIX%\bin\tclsh86t.exe %LIBRARY_PREFIX%\bin\tclsh.exe
