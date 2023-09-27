@@ -13,6 +13,7 @@ if "%ARCH%"=="32" (
   echo %SRC_DIR%\..\..\..\.scripts\win_64_native_build.bat
   if EXIST %SRC_DIR%\..\..\..\.scripts\win_64_native_build.bat echo "found native .bat"
   if EXIST %SRC_DIR%\conda_build.bat echo "found native .bat"
+  where nmake
   echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RUNNING NATIVE BUILD ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
   start /B /I /WAIT cmd /c %SRC_DIR%\..\..\..\.scripts\win_64_native_build.bat "%LIBRARY_PREFIX%" "%VS_MAJOR%" "%SRC_DIR%\tcl%PKG_VERSION%\win"
   echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ FINISHED NATIVE BUILD ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
