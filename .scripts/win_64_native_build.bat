@@ -2,6 +2,7 @@ set "PATH=C:\WINDOWS\system32;C:\WINDOWS;%~1;%~3;%~4"
 set "LIBRARY_PREFIX=%~1\win-amd64"
 
 echo %LIBRARY_PREFIX%
+echo %PATH%
 
 set MACHINE="AMD64"
 set ARCH="AMD64"
