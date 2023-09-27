@@ -11,7 +11,7 @@ if "%ARCH%"=="32" (
   set ARCH="ARM64"
   echo %SRC_DIR%\tcl%PKG_VERSION%\win
   echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RUNNING NATIVE BUILD ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-  start /B /I /WAIT /machine amd64 cmd /c %~dp0\..\.scripts\win_64_native_build.bat "%LIBRARY_PREFIX%" "%VS_MAJOR%"
+  start /B /I /WAIT cmd /c %~dp0\..\.scripts\win_64_native_build.bat "%LIBRARY_PREFIX%" "%VS_MAJOR%"
   echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ FINISHED NATIVE BUILD ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
   :: A different SDK is needed when build with VS 2017 and 2015
   :: http://wiki.tcl.tk/54819
