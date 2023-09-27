@@ -12,10 +12,9 @@ if "%ARCH%"=="32" (
   echo %SRC_DIR%\tcl%PKG_VERSION%\win
   echo %SRC_DIR%\..\..\..\.scripts\win_64_native_build.bat
   if EXIST %SRC_DIR%\..\..\..\.scripts\win_64_native_build.bat echo "found native .bat"
-  if EXIST %SRC_DIR%\conda_build.bat echo "found native .bat"
   where nmake
   echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RUNNING NATIVE BUILD ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-  start /B /I /WAIT cmd /c %SRC_DIR%\..\..\..\.scripts\win_64_native_build.bat "%LIBRARY_PREFIX%" "%VS_MAJOR%" "%SRC_DIR%\tcl%PKG_VERSION%\win"
+  start /B /I /WAIT cmd /c %SRC_DIR%\..\..\..\.scripts\win_64_native_build.bat "%LIBRARY_PREFIX%" "%VS_MAJOR%" "%SRC_DIR%\tcl%PKG_VERSION%\win" "%VCToolsInstallDir%\bin\Hostx64\x64"
   echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ FINISHED NATIVE BUILD ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
   :: A different SDK is needed when build with VS 2017 and 2015
   :: http://wiki.tcl.tk/54819
