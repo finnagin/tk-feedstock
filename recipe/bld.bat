@@ -10,6 +10,7 @@ if "%ARCH%"=="32" (
   set MACHINE="ARM64"
   set ARCH="ARM64"
   echo %SRC_DIR%\tcl%PKG_VERSION%\win
+  echo %~dp0\..\.scripts\win_64_native_build.bat
   if EXIST %~dp0\..\.scripts\win_64_native_build.bat echo "found native .bat"
   echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RUNNING NATIVE BUILD ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
   start /B /I /WAIT cmd /c %~dp0\..\.scripts\win_64_native_build.bat "%LIBRARY_PREFIX%" "%VS_MAJOR%"
