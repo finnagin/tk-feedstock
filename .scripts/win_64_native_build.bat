@@ -1,4 +1,4 @@
-set "PATH=C:\WINDOWS\system32;C:\WINDOWS;%~1;%~3"
+set "PATH=C:\WINDOWS\system32;C:\WINDOWS;%~1;%~3;%~4"
 set "LIBRARY_PREFIX=%~1\win-amd64"
 
 echo %LIBRARY_PREFIX%
