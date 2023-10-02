@@ -13,7 +13,9 @@ if %2=="14" (
 )
 
 echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Installing in %LIBRARY_PREFIX% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-pushd %~1
+pushd %~3
+dir
+set
 nmake -f makefile.vc BUILDDIRTOP=RELEASE_win_amd64 INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% release
 :: nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% install
 if %ERRORLEVEL% GTR 0 exit 1
