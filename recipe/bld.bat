@@ -15,7 +15,7 @@ if "%ARCH%"=="32" (
   where nmake
   set
   echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RUNNING NATIVE BUILD ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-  start /B /I /WAIT cmd /c %SRC_DIR%\..\..\..\.scripts\win_64_native_build.bat "%PIP_CACHE_DIR%..\_h_env\Library" "%VS_MAJOR%" "%PIP_CACHE_DIR%..\work\tcl%PKG_VERSION%\win" "%VCToolsInstallDir%bin\Hostx64\x64"
+  start /B /I /WAIT cmd /c %SRC_DIR%\..\..\..\.scripts\win_64_native_build.bat "%PIP_CACHE_DIR%\..\_h_env\Library" "%VS_MAJOR%" "%PIP_CACHE_DIR%\..\work\tcl%PKG_VERSION%\win" "%VCToolsInstallDir%bin\Hostx64\x64"
   echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ FINISHED NATIVE BUILD ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
   :: A different SDK is needed when build with VS 2017 and 2015
   :: http://wiki.tcl.tk/54819
