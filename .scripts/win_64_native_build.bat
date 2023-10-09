@@ -7,6 +7,8 @@ echo %PATH%
 set MACHINE="AMD64"
 set ARCH="AMD64"
 
+echo %4
+echo %5
 set "VS140COMNTOOLS=%~5"
 
 call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x64
