@@ -7,6 +7,8 @@ echo %PATH%
 set MACHINE="AMD64"
 set ARCH="AMD64"
 
+call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x64
+
 if %2=="14" (
   echo "Switching SDK versions"
   call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x64 10.0.15063.0
