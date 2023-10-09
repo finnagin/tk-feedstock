@@ -8,10 +8,10 @@ set MACHINE="AMD64"
 set ARCH="AMD64"
 
 echo "%~4\..\..\..\..\..\..\..\vcvarsall.bat"
-set "VS170COMNTOOLS=%~5"
-echo "%VS170COMNTOOLS%..\..\VC\vcvarsall.bat"
+set "VCINSTALLDIR=%~5"
+echo "%VCINSTALLDIR%Auxiliary\Build\vcvarsall.bat"
 
-call "%VS170COMNTOOLS%..\..\VC\vcvarsall.bat" x64
+call "%VCINSTALLDIR%Auxiliary\Build\vcvarsall.bat" x64
 
 if %2=="14" (
   echo "Switching SDK versions"
