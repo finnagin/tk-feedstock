@@ -38,6 +38,8 @@ if "%ARCH%"=="32" (
 pushd tcl%PKG_VERSION%\win
 if NOT "%ARCH%"=="arm64" (
   nmake nmakehlp.exe
+) else (
+  set "PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win"
 )
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% release
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% install
