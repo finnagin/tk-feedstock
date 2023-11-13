@@ -7,7 +7,6 @@ echo %PATH%
 set MACHINE="AMD64"
 set ARCH="AMD64"
 
-echo "%~4\..\..\..\..\..\..\..\vcvarsall.bat"
 set "VCINSTALLDIR=%~5"
 echo "%VCINSTALLDIR%Auxiliary\Build\vcvarsall.bat"
 
