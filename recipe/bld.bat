@@ -11,7 +11,7 @@ if "%ARCH%"=="32" (
   set ARCH="ARM64"
   echo %SRC_DIR%\tcl%PKG_VERSION%\win
   for /D %%f in (%SRC_DIR%\tcl%PKG_VERSION%\pkgs\*) do (
-    "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Moving %SRC_DIR%\tcl%PKG_VERSION%\win\rules-ext.vc -> %%f\rules-ext.vc ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+    echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Moving %SRC_DIR%\tcl%PKG_VERSION%\win\rules-ext.vc -> %%f\rules-ext.vc ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
     copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\rules-ext.vc" "%%f\rules-ext.vc"
     copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\x86_64-w64-mingw32-nmakehlp.exe" "%%f\x86_64-w64-mingw32-nmakehlp.exe"
   )
