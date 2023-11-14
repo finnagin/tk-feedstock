@@ -12,7 +12,7 @@ if "%ARCH%"=="32" (
   echo %SRC_DIR%\tcl%PKG_VERSION%\win
   for /D %%f in (%SRC_DIR%\tcl%PKG_VERSION%\pkgs\*) do (
     echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Moving %SRC_DIR%\tcl%PKG_VERSION%\win\rules-ext.vc -> %%f\rules-ext.vc ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-    copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\rules-ext.vc" "%%f\rules-ext.vc"
+    copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\rules-ext.vc" "%%f\win\rules-ext.vc"
     copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\x86_64-w64-mingw32-nmakehlp.exe" "%%f\win\x86_64-w64-mingw32-nmakehlp.exe"
   )
   echo %SRC_DIR%\..\..\..\.scripts\win_64_native_build.bat
