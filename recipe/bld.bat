@@ -20,7 +20,7 @@ if "%ARCH%"=="32" (
   for /D %%f in (%SRC_DIR%\tcl%PKG_VERSION%\pkgs\*) do (
     echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Moving %SRC_DIR%\tcl%PKG_VERSION%\win\rules-ext.vc -> %%f\rules-ext.vc ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
     copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\rules-ext.vc" "%%f\win\rules-ext.vc"
-    copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\x86_64-w64-mingw32-nmakehlp.exe" "%%f\win\x86_64-w64-mingw32-nmakehlp.exe"
+    copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\nmakehlp.exe" "%%f\win\nmakehlp.exe"
   )
   set
   :: A different SDK is needed when build with VS 2017 and 2015
