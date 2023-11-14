@@ -22,6 +22,7 @@ if "%ARCH%"=="32" (
     copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\rules-ext.vc" "%%f\win\rules-ext.vc"
     copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\nmakehlp.exe" "%%f\win\nmakehlp.exe"
   )
+  copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\nmakehlp.exe" "%SRC_DIR%\tk%PKG_VERSION%\win\nmakehlp.exe"
   set
   :: A different SDK is needed when build with VS 2017 and 2015
   :: http://wiki.tcl.tk/54819
