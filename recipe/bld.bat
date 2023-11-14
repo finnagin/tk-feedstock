@@ -10,11 +10,6 @@ if "%ARCH%"=="32" (
   set MACHINE="ARM64"
   set ARCH="ARM64"
   echo %SRC_DIR%\tcl%PKG_VERSION%\win
-  for /D %%f in (%SRC_DIR%\tcl%PKG_VERSION%\pkgs\*) do (
-    echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Moving %SRC_DIR%\tcl%PKG_VERSION%\win\rules-ext.vc -> %%f\rules-ext.vc ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-    copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\rules-ext.vc" "%%f\win\rules-ext.vc"
-    copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\x86_64-w64-mingw32-nmakehlp.exe" "%%f\win\x86_64-w64-mingw32-nmakehlp.exe"
-  )
   echo %SRC_DIR%\..\..\..\.scripts\win_64_native_build.bat
   if EXIST %SRC_DIR%\..\..\..\.scripts\win_64_native_build.bat echo "found native .bat"
   where nmake
@@ -22,6 +17,11 @@ if "%ARCH%"=="32" (
   start /B /I /WAIT cmd /c %SRC_DIR%\..\..\..\.scripts\win_64_native_build.bat "%PIP_CACHE_DIR%\..\_h_env\Library" "%VS_MAJOR%" "%PIP_CACHE_DIR%\..\work\tcl%PKG_VERSION%\win" "%VCToolsInstallDir%bin\Hostx64\x64" "%VCINSTALLDIR%"
   echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ FINISHED NATIVE BUILD ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
   set "TCLSH_NATIVE=%SRC_DIR%\tcl%PKG_VERSION%\win\RELEASE_win_amd64\tclsh86t.exe"
+  for /D %%f in (%SRC_DIR%\tcl%PKG_VERSION%\pkgs\*) do (
+    echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Moving %SRC_DIR%\tcl%PKG_VERSION%\win\rules-ext.vc -> %%f\rules-ext.vc ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+    copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\rules-ext.vc" "%%f\win\rules-ext.vc"
+    copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\x86_64-w64-mingw32-nmakehlp.exe" "%%f\win\x86_64-w64-mingw32-nmakehlp.exe"
+  )
   set
   :: A different SDK is needed when build with VS 2017 and 2015
   :: http://wiki.tcl.tk/54819
