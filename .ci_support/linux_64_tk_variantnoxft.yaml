@@ -17,4 +17,4 @@ tk:
 tk_variant:
 - noxft
 zlib:
-- '1.2'
+- '1'
