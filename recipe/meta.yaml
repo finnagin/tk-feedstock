@@ -42,6 +42,7 @@ requirements:
     - {{ cdt('freetype-devel') }}        # [linux and tk_variant == 'xft']
     - {{ cdt('libpng-devel') }}          # [linux and tk_variant == 'xft']
     - {{ cdt('libuuid-devel') }}         # [linux and tk_variant == 'xft']
+    - {{ cdt('expat-devel') }}           # [linux and tk_variant == 'xft']
     - {{ cdt('fontconfig-devel') }}      # [linux and tk_variant == 'xft']
     - {{ cdt('libXrender-devel') }}      # [linux and tk_variant == 'xft']
     - {{ cdt('libXft-devel') }}          # [linux and tk_variant == 'xft']
