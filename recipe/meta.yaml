@@ -40,6 +40,7 @@ requirements:
     - {{ cdt('libxau') }}                # [linux]
     - make                               # [unix]
     - {{ cdt('freetype-devel') }}        # [linux and tk_variant == 'xft']
+    - {{ cdt('libpng-devel') }}          # [linux and tk_variant == 'xft']
     - {{ cdt('fontconfig-devel') }}      # [linux and tk_variant == 'xft']
     - {{ cdt('libXrender-devel') }}      # [linux and tk_variant == 'xft']
     - {{ cdt('libXft-devel') }}          # [linux and tk_variant == 'xft']
