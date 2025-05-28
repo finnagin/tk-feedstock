@@ -1,3 +1,5 @@
+@echo ON
+
 if "%target_platform%"=="win-64" (
   set MACHINE="AMD64"
 )
