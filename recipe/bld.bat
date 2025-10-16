@@ -24,7 +24,7 @@ setlocal
     set "CC=%CC_FOR_BUILD%"
     set "CXX=%CXX_FOR_BUILD%"
     set "LIB=%LIB_FOR_BUILD%"
-    set "INCLUDE="%INCLUDE_FOR_BUILD%"
+    set "INCLUDE=%INCLUDE_FOR_BUILD%"
   )
   nmake nmakehlp.exe MACHINE=%BUILD_MACHINE%
 endlocal
@@ -41,7 +41,7 @@ setlocal
     set "CC=%CC_FOR_BUILD%"
     set "CXX=%CXX_FOR_BUILD%"
     set "LIB=%LIB_FOR_BUILD%"
-    set "INCLUDE="%INCLUDE_FOR_BUILD%"
+    set "INCLUDE=%INCLUDE_FOR_BUILD%"
   )
   nmake nmakehlp.exe MACHINE=%BUILD_MACHINE%
 endlocal
