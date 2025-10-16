@@ -19,7 +19,15 @@ if NOT "%target_platform%"=="%build_platform%" (
 )
 
 pushd tcl%PKG_VERSION%\win
-nmake nmakehlp.exe MACHINE=%BUILD_MACHINE%
+setlocal
+  if NOT "%target_platform%"=="%build_platform%" (
+    set "CC=%CC_FOR_BUILD%"
+    set "CXX=%CXX_FOR_BUILD%"
+    set "LIB=%LIB_FOR_BUILD%"
+    set "INCLUDE="%INCLUDE_FOR_BUILD%"
+  )
+  nmake nmakehlp.exe MACHINE=%BUILD_MACHINE%
+endlocal
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% %TCLSH_NATIVE% MACHINE=%MACHINE% release
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% %TCLSH_NATIVE% MACHINE=%MACHINE% install
 if %ERRORLEVEL% GTR 0 exit 1
@@ -28,7 +36,15 @@ popd
 :: Tk build
 
 pushd tk%PKG_VERSION%\win
-nmake nmakehlp.exe MACHINE=%BUILD_MACHINE%
+setlocal
+  if NOT "%target_platform%"=="%build_platform%" (
+    set "CC=%CC_FOR_BUILD%"
+    set "CXX=%CXX_FOR_BUILD%"
+    set "LIB=%LIB_FOR_BUILD%"
+    set "INCLUDE="%INCLUDE_FOR_BUILD%"
+  )
+  nmake nmakehlp.exe MACHINE=%BUILD_MACHINE%
+endlocal
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% %TCLSH_NATIVE% MACHINE=%MACHINE% TCLDIR=..\..\tcl%PKG_VERSION% release
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% %TCLSH_NATIVE% MACHINE=%MACHINE% TCLDIR=..\..\tcl%PKG_VERSION% install
 if %ERRORLEVEL% GTR 0 exit 1
