@@ -27,6 +27,13 @@ setlocal
     set "INCLUDE=%INCLUDE_FOR_BUILD%"
   )
   nmake nmakehlp.exe MACHINE=%BUILD_MACHINE%
+  for /r "pkgs" %%d in (.) do (
+    if exist "%%d\win\nmakehlp.c" (
+      pushd "%%d"
+        nmake nmakehlp.exe MACHINE=%BUILD_MACHINE%
+      popd
+    )
+  )
 endlocal
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% %TCLSH_NATIVE% MACHINE=%MACHINE% release
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% %TCLSH_NATIVE% MACHINE=%MACHINE% install
