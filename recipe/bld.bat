@@ -28,8 +28,8 @@ setlocal
   )
   nmake nmakehlp.exe MACHINE=%BUILD_MACHINE%
   for /r "%SRC_DIR%\tcl%PKG_VERSION%\pkgs" %%d in (.) do (
-    if exist "%%d\win\nmakehlp.c" (
-      pushd "%%d\win"
+    if exist "%%d\nmakehlp.c" (
+      pushd "%%d"
         nmake nmakehlp.exe MACHINE=%BUILD_MACHINE%
       popd
     )
