@@ -32,6 +32,8 @@ build:
   ignore_run_exports_from:
     - xorg-libx11                        # [linux]
     - xorg-libxft                        # [linux and tk_variant == 'xft']
+    - expat                              # [linux and tk_variant == 'xft']
+    - fontconfig                         # [linux and tk_variant == 'xft']
 
 requirements:
   build:
@@ -49,6 +51,7 @@ requirements:
   run_constrained:
     - {{ pin_compatible("xorg-libx11") }}  # [linux]
     - {{ pin_compatible("xorg-libxft") }}  # [linux and tk_variant == 'xft']
+    - {{ pin_compatible("fontconfig") }}   # [linux and tk_variant == 'xft']
 
 test:
 
