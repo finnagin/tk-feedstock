@@ -1,6 +1,6 @@
 {% set version = "8.6.13" %}
 {% set maj_min = ".".join(version.split(".")[:2]) %}
-{% set build = 2 %}
+{% set build = 3 %}
 
 package:
   name: tk
@@ -29,26 +29,29 @@ build:
   run_exports:
     # pin to major.minor because library names have that info in them
     - {{ pin_subpackage('tk', max_pin='x.x') }}
+  ignore_run_exports_from:
+    - xorg-libx11                        # [linux]
+    - xorg-libxft                        # [linux and tk_variant == 'xft']
+    - expat                              # [linux and tk_variant == 'xft']
+    - fontconfig                         # [linux and tk_variant == 'xft']
 
 requirements:
   build:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
-    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
-    - {{ cdt('libx11-devel') }}          # [linux]
-    - {{ cdt('libxcb') }}                # [linux]
-    - {{ cdt('libxau') }}                # [linux]
     - make                               # [unix]
-    - {{ cdt('freetype-devel') }}        # [linux and tk_variant == 'xft']
-    - {{ cdt('libpng-devel') }}          # [linux and tk_variant == 'xft']
-    - {{ cdt('libuuid-devel') }}         # [linux and tk_variant == 'xft']
-    - {{ cdt('expat-devel') }}           # [linux and tk_variant == 'xft']
-    - {{ cdt('fontconfig-devel') }}      # [linux and tk_variant == 'xft']
-    - {{ cdt('libXrender-devel') }}      # [linux and tk_variant == 'xft']
-    - {{ cdt('libXft-devel') }}          # [linux and tk_variant == 'xft']
     - pkg-config                         # [linux and tk_variant == 'xft']
   host:
     - zlib  # [unix]
+    - xorg-xorgproto                     # [linux]
+    - xorg-libx11                        # [linux]
+    - xorg-libxft                        # [linux and tk_variant == 'xft']
+    - fontconfig                         # [linux and tk_variant == 'xft']
+    - expat                              # [linux and tk_variant == 'xft']
+  run_constrained:
+    - {{ pin_compatible("xorg-libx11") }}  # [linux]
+    - {{ pin_compatible("xorg-libxft") }}  # [linux and tk_variant == 'xft']
+    - {{ pin_compatible("fontconfig") }}   # [linux and tk_variant == 'xft']
 
 test:
 
