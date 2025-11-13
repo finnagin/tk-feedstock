@@ -45,6 +45,7 @@ requirements:
     - xorg-libx11                        # [linux]
     - xorg-libxft                        # [linux and tk_variant == 'xft']
     - fontconfig                         # [linux and tk_variant == 'xft']
+    - expat                              # [linux and tk_variant == 'xft']
   run_constrained:
     - {{ pin_compatible("xorg-libx11") }}  # [linux]
     - {{ pin_compatible("xorg-libxft") }}  # [linux and tk_variant == 'xft']
