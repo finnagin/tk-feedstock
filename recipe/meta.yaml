@@ -41,6 +41,7 @@ requirements:
     - pkg-config                         # [linux and tk_variant == 'xft']
   host:
     - zlib  # [unix]
+    - xorg-xorgproto                     # [linux]
     - xorg-libx11                        # [linux]
     - xorg-libxft                        # [linux and tk_variant == 'xft']
     - fontconfig                         # [linux and tk_variant == 'xft']
