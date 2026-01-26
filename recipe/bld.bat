@@ -14,6 +14,9 @@ if "%build_platform%"=="win-arm64" (
   set BUILD_MACHINE="ARM64"
 )
 
+echo %target_platform%
+echo %build_platform%
+
 if NOT "%target_platform%"=="%build_platform%" (
   set "TCLSH_NATIVE=TCLSH_NATIVE=%BUILD_PREFIX%\Library\bin\tclsh86.exe"
 )
@@ -25,16 +28,17 @@ setlocal
     set "CXX=%CXX_FOR_BUILD%"
     set "LIB=%LIB_FOR_BUILD%"
     set "INCLUDE=%INCLUDE_FOR_BUILD%"
+    start /B /I /WAIT cmd /c %SRC_DIR%\..\..\..\.scripts\win_64_native_build.bat "%PIP_CACHE_DIR%\..\_h_env\Library" "%PIP_CACHE_DIR%\..\work\tcl%PKG_VERSION%\win" "%VCToolsInstallDir%bin\Hostx64\x64" "%VCINSTALLDIR%"
+  ) else (
+    nmake nmakehlp.exe MACHINE=%BUILD_MACHINE%
   )
-  nmake nmakehlp.exe MACHINE=%BUILD_MACHINE%
-  for /r "%SRC_DIR%\tcl%PKG_VERSION%\pkgs" %%d in (.) do (
-    if exist "%%d\nmakehlp.c" (
-      pushd "%%d"
-        nmake nmakehlp.exe MACHINE=%BUILD_MACHINE%
-      popd
-    )
+  for /D %%f in (%SRC_DIR%\tcl%PKG_VERSION%\pkgs\*) do (
+    copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\rules-ext.vc" "%%f\win\rules-ext.vc"
+    copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\nmakehlp.exe" "%%f\win\nmakehlp.exe"
   )
+  copy /Y "%SRC_DIR%\tcl%PKG_VERSION%\win\nmakehlp.exe" "%SRC_DIR%\tk%PKG_VERSION%\win\nmakehlp.exe"
 endlocal
+set "PATH=%PATH%;%SRC_DIR%\tcl%PKG_VERSION%\win"
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% %TCLSH_NATIVE% MACHINE=%MACHINE% release
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% %TCLSH_NATIVE% MACHINE=%MACHINE% install
 if %ERRORLEVEL% GTR 0 exit 1
